@@ -100,8 +100,8 @@ const App = () => {
       setBombCount(0);
       setCleanCount(0);
       setBombStart([
-        Math.floor(Math.random() * (gameN - 0 + 1) + 0),
-        Math.floor(Math.random() * (gameN - 0 + 1) + 0),
+        Math.floor(Math.random() * (10 - gameN - 0 + 1) + 0),
+        Math.floor(Math.random() * (10 - gameN - 0 + 1) + 0),
       ]);
     }
   }, [bombCount]);
