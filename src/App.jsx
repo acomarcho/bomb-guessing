@@ -24,13 +24,7 @@ const App = () => {
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   ]);
-  const [bombStart, setBombStart] = useState(getRandomInt(0, 6)); // Top left corner of bomb
-
-  const getRandomInt = (min, max) => {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
+  const [bombStart, setBombStart] = useState(Math.random() * (6 - 0 + 1) + 0); // Top left corner of bomb
 
   useEffect(() => {
     let newGrid = [];
@@ -57,7 +51,6 @@ const App = () => {
       newGrid.push(newRow);
     });
     setGrid(newGrid);
-    console.log(newGrid);
   }, [lastTileSelected]);
 
   useEffect(() => {
@@ -79,7 +72,7 @@ const App = () => {
       setLastTileSelected([-1000, -1000])
       setBombCount(0)
       setCleanCount(0)
-      setBombStart(getRandomInt(0, 6))
+      setBombStart(Math.random() * (6 - 0 + 1) + 0)
     }
   }, [bombCount]);
 
