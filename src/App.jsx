@@ -24,8 +24,7 @@ const App = () => {
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   ]);
-  const [bombStart, setBombStart] = useState(Math.random() * (6 - 0 + 1) + 0); // Top left corner of bomb
-
+  const [bombStart, setBombStart] = useState([Math.floor(Math.random() * (4 - 0 + 1) + 0), Math.floor(Math.random() * (4 - 0 + 1) + 0)])
   useEffect(() => {
     let newGrid = [];
     grid.forEach((row, i) => {
@@ -33,10 +32,10 @@ const App = () => {
       row.forEach((tile, j) => {
         if (lastTileSelected[0] == i && lastTileSelected[1] == j) {
           if (
-            lastTileSelected[0] - bombStart < 4 &&
-            lastTileSelected[0] - bombStart >= 0 &&
-            lastTileSelected[1] - bombStart < 4 &&
-            lastTileSelected[1] - bombStart >= 0
+            lastTileSelected[0] - bombStart[0] < 6 &&
+            lastTileSelected[0] - bombStart[0] >= 0 &&
+            lastTileSelected[1] - bombStart[1] < 6 &&
+            lastTileSelected[1] - bombStart[1] >= 0
           ) {
             newRow.push(2);
             setBombCount((oldCount) => oldCount + 1);
@@ -54,7 +53,7 @@ const App = () => {
   }, [lastTileSelected]);
 
   useEffect(() => {
-    if (bombCount == 16) {
+    if (bombCount == 36) {
       window.alert(`Game finished with ${cleanCount} green tiles revealed.`);
       setPastScores((oldScores) => [...oldScores, cleanCount]);
       setGrid([
@@ -72,7 +71,7 @@ const App = () => {
       setLastTileSelected([-1000, -1000])
       setBombCount(0)
       setCleanCount(0)
-      setBombStart(Math.random() * (6 - 0 + 1) + 0)
+      setBombStart([Math.floor(Math.random() * (4 - 0 + 1) + 0), Math.floor(Math.random() * (4 - 0 + 1) + 0)])
     }
   }, [bombCount]);
 
@@ -80,7 +79,7 @@ const App = () => {
     <div className="centerWrapper">
       <div className="heading">
         <h1>Bomb Guessing Game</h1>
-        <p>Within the 10x10 grid, there is placed a 4x4 bomb inside.</p>
+        <p>Within the 10x10 grid, there is placed a 6x6 bomb inside.</p>
         <p>Your task is to decide where is the bomb located!</p>
         <p>Try to do it with the least number of green squares revealed.</p>
       </div>
