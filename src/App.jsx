@@ -1,11 +1,5 @@
 import { useState, useEffect } from "react";
 
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 const App = () => {
   /*
     States:
@@ -31,6 +25,12 @@ const App = () => {
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   ]);
   const [bombStart, setBombStart] = useState(getRandomInt(0, 6)); // Top left corner of bomb
+
+  const getRandomInt = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
   useEffect(() => {
     let newGrid = [];
