@@ -49,3 +49,17 @@
 .grid.red {
   background: rgba(255, 0, 0, 0.4);
 }
+
+.formGroup {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.nInput {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
